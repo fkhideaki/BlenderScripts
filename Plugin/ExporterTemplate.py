@@ -36,11 +36,11 @@ class ExporterTemplate(Operator, ExportHelper):
             )
 
     def execute(self, context):
-        return write_some_data(context, self.filepath)
+        return writeMain(context, self.filepath)
 
 
 def menu_func_export(self, context):
-    self.layout.operator(ExporterTemplate.bl_idname, text = "Exporter Operator")
+    self.layout.operator(ExporterTemplate.bl_idname, text = "Exporter template")
 
 def register():
     bpy.utils.register_class(ExporterTemplate)
