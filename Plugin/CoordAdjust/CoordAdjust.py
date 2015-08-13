@@ -34,7 +34,6 @@ def rotMain(ax, ay, az, ang):
 def rotYZXMain(dir):
     n = cmath.sqrt(3.0).real
     ang = cmath.pi * dir *2.0 / 3.0
-    print(str(ang))
     bpy.ops.transform.rotate(
         value=ang,
         axis=(n, n, n),
