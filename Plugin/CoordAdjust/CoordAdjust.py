@@ -124,9 +124,9 @@ class Scale10M(bpy.types.Operator):
         return {'FINISHED'}
 
 class Rot90Panel(bpy.types.Panel):
-    """Rotate selected objects each 90 degree"""
+    """Adjust objects coordination"""
     bl_label = "CoordAdjust"
-    bl_idname = "OBJECT_PT_DISP_EXT"
+    bl_idname = "OBJECT_PT_COORD_ADJUST"
     bl_space_type = 'PROPERTIES'
     bl_region_type = 'WINDOW'
     bl_context = "object"
