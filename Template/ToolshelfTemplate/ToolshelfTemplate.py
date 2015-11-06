@@ -30,7 +30,7 @@ class ToolshelTestCmd2(bpy.types.Operator):
         return {'FINISHED'}
 
 # main class of this toolbar
-class VIEW3D_PT_3dnavigationPanel(bpy.types.Panel):
+class VIEW3D_PT_SamplePanel(bpy.types.Panel):
     bl_category = "SampleTab"
     bl_space_type = "VIEW_3D"
     bl_region_type = "TOOLS"
