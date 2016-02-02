@@ -4,7 +4,7 @@ bl_info = {
     "version": (1, 0),
     "blender": (2, 65, 0),
     "location": "View3D > Tool Shelf > ToolShelfSampleTab",
-    "description": "Exporter plugin template",
+    "description": "Toolshelf sample",
     "warning": "",
     "wiki_url": "",
     "category": "3D View",
