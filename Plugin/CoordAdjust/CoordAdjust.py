@@ -18,11 +18,31 @@ import blf
 import mathutils
 import bmesh
 
+def getContextArea(areaName):
+    for area in bpy.context.screen.areas:
+        if area.type == areaName:
+            return area
+    raise RuntimeError('Area not found (' + name + ')')
+
+def getRegion(area, regionName):
+    for region in area.regions:
+        if region.type == regionName:
+            return region
+    raise RuntimeError('Region not found in area ' + area.type + ' (' + regionName + ')')
+
+def getOverride3D():
+    area = getContextArea('VIEW_3D')
+    region = getRegion(area, 'WINDOW')
+    override = {'area': area, 'region': region}
+    return override
+
+
 def rotMain(ax, ay, az, ang):
     cx = (ax == 1)
     cy = (ay == 1)
     cz = (az == 1)
     bpy.ops.transform.rotate(
+        getOverride3D(),
         value=cmath.pi * 0.5 * ang,
         axis=(ax, ay, az),
         constraint_axis=(cx, cy, cz),
@@ -35,6 +55,7 @@ def rotYZXMain(dir):
     n = cmath.sqrt(3.0).real
     ang = cmath.pi * dir *2.0 / 3.0
     bpy.ops.transform.rotate(
+        getOverride3D(),
         value=ang,
         axis=(n, n, n),
         constraint_axis=(False, False, False),
@@ -45,6 +66,7 @@ def rotYZXMain(dir):
 
 def scaleMain(s):
     bpy.ops.transform.resize(
+        getOverride3D(),
         value=(s, s, s),
         constraint_axis=(False, False, False),
         constraint_orientation='GLOBAL',
