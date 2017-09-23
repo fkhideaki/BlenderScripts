@@ -1,21 +1,21 @@
 import inspect
 
 
-def IntToString(int_val):
+def intToString(int_val):
     return str(int_val)
 
-def PrintObjectInfo(obj):
+def printObjectInfo(obj):
     dir(obj)
 
+# メンバ一覧表示
 def pdir(obj):
-    print(dir(obj))
-
-def pdirl(obj):
     for s in dir(obj):
         print(s)
 
-def ptype(obj):
+# 型名表示
+def printType(obj):
     print(type(obj))
 
-def print_args(func):
+# 関数の引数リストを表示
+def printArgs(func):
     print(inspect.getargspec(func))
