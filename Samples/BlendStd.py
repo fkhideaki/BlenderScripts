@@ -56,7 +56,6 @@ def PlotAllTexts():
         print("")
 
 
-
 def currentDirPath(fname):
     cdir = os.path.abspath(__file__)
     cdir = os.path.dirname(cdir)
@@ -67,3 +66,18 @@ def currentDirPath(fname):
 
 def getCurrentDir():
     return currentDirPath('')
+
+
+dir toggleConsole():
+    bpy.ops.wm.console_toggle()
+
+
+def setActiveObject(obj):
+    obj.select_set(True)
+    bpy.context.view_layer.objects.active = obj
+
+def setActiveObjectByName(name):
+    obj = bpy.data.objects[name]
+    if not obj:
+        return
+    setActiveObject(obj)
