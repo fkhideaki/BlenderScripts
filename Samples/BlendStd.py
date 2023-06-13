@@ -91,3 +91,22 @@ def moveObjectToCollection(collection, obj):
     for c in obj.users_collection:
         c.objects.unlink(obj)
     collection.objects.link(obj)
+
+
+def getSels():
+    sels = []
+    for o in bpy.data.objects:
+        if o.select_get() and o.visible_get():
+            sels.append(o)
+    return sels
+
+def getTargetSD():
+    sels = getSels()
+    if len(sels) != 2:
+        return None, None
+    act = bpy.context.active_object
+    if sels[0] is act:
+        return act, sels[1]
+    if sels[1] is act:
+        return act, sels[0]
+    return None, None
