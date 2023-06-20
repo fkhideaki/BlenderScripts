@@ -1,18 +1,17 @@
 import bpy
-import math
 import os
 import os.path
 
 
 def ToggleEditmode():
-	bpy.ops.object.editmode_toggle()
+    bpy.ops.object.editmode_toggle()
 
 
 def GetMeshByName(name):
     return bpy.data.meshes[name]
 
 def GetMeshByIdx(idx):
-	return bpy.data.meshes[idx]
+    return bpy.data.meshes[idx]
 
 def GetMeshObjectByName(name):
     for obj in bpy.data.objects:
@@ -78,16 +77,6 @@ def setActiveObjectByName(name):
         return
     setActiveObject(obj)
 
-def addNewCollection():
-    c = bpy.data.collections.new('')
-    bpy.context.scene.collection.children.link(c)
-    return c
-
-def moveObjectToCollection(collection, obj):
-    for c in obj.users_collection:
-        c.objects.unlink(obj)
-    collection.objects.link(obj)
-
 
 def getSels():
     sels = []
@@ -107,3 +96,10 @@ def getTargetSD():
     if sels[1] is act:
         return act, sels[0]
     return None, None
+
+def copyObject(src, linkData):
+    o = src.copy()
+    if not linkData:
+        o.data = src.data.copy()
+        bpy.context.scene.collection.objects.link(o)
+    return o
