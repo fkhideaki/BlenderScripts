@@ -38,10 +38,6 @@ def PrintObjectNames():
         print(o.name)
 
 
-def OpenObj(filename):
-    bpy.ops.import_scene.obj(filepath=filename)
-
-
 def PrintTextNames():
     for t in bpy.data.texts:
         print(t.name)
@@ -100,6 +96,7 @@ def getSels():
             sels.append(o)
     return sels
 
+# Get pair when processing from active to selected element
 def getTargetSD():
     sels = getSels()
     if len(sels) != 2:
