@@ -1,8 +1,8 @@
 import bpy
 
 
-def addNewCollection():
-    c = bpy.data.collections.new('')
+def addNewCollection(name):
+    c = bpy.data.collections.new(name)
     bpy.context.scene.collection.children.link(c)
     return c
 
