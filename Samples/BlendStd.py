@@ -103,3 +103,10 @@ def copyObject(src, linkData):
         o.data = src.data.copy()
         bpy.context.scene.collection.objects.link(o)
     return o
+
+def addNewEmptyObject(name):
+    o = bpy.data.objects.new(name, None)
+    bpy.context.scene.collection.objects.link(o)
+    o.empty_display_size = 10
+    o.empty_display_type = 'PLAIN_AXES'
+    return o
