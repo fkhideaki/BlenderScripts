@@ -79,11 +79,7 @@ def setActiveObjectByName(name):
 
 
 def getSels():
-    sels = []
-    for o in bpy.data.objects:
-        if o.select_get() and o.visible_get():
-            sels.append(o)
-    return sels
+    return bpy.context.selected_objects
 
 # Get pair when processing from active to selected element
 def getTargetSD():
